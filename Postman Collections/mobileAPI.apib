@@ -1,0 +1,1460 @@
+FORMAT: 1A
+HOST: http://example.com/rest/v1
+
+# mobileAPI
+TODO: Add Description
+
+# Group AuthenticationAPI
+
+## AuthenticationAPI Authenticate Xml [/AuthenticationAPI/Authenticate/xml]
+
+### Authenticate [POST]
+Generates authToken that is valid 24 hours.
+
+
+
+<h4>Limits</h4>
+
+
+
+
+
+Calls per minute | Calls per hour | Calls per day
+
+-- | ---- | -----------
+
+1 |12 |No limit 
+
+
+
+
+
+<h4>Error messages</h4>
+
+
+
+Message | Description
+
+-- | ---- 
+
+API_LIMIT_DAY:N | Exceeded N methods calls in this day
+
+API_LIMIT_HOUR:N | Exceeded N methods calls in this hour
+
+API_LIMIT_MIN:N | Exceeded N methods calls in this minute
++ Attributes
+    + Username (string, required)
+
+        + Sample: {{Username}}
+    + Password (string, required)
+
+        + Sample: {{Password}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group DataAPI
+
+## DataAPI VehicleList Xml [/DataAPI/VehicleList/xml]
+
+### VehicleList [POST]
+Lists all vehicles.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DataAPI DriverList Xml [/DataAPI/DriverList/xml{?AuthToken}]
+
+### DriverList [POST]
+Lists all drivers.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DataAPI VehicleDataList Xml [/DataAPI/VehicleDataList/xml{?AuthToken}]
+
+### VehicleDataList [POST]
+Lists last available vehicle data.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DataAPI VehicleCurrentTemperatureList Xml [/DataAPI/VehicleCurrentTemperatureList/xml{?AuthToken}]
+
+### VehicleCurrentTemperatureList [POST]
+Lists current values of temperature sensors and their switches.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DataAPI VehicleDocumentAdd Xml [/DataAPI/VehicleDocumentAdd/xml{?AuthToken,VehiclePlateNumber,DocumentCategory,DocumentDateTime,Lat,Lon}]
+
+### VehicleDocumentAdd [POST]
+Adds a vehicle document.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DocumentCategory (string, required)
+
+        + Sample: {{DocumentCategory}}
+    + DocumentDateTime (string, required)
+
+        + Sample: {{DocumentDateTime}}
+    + Lat (string, required)
+
+        + Sample: {{Lat}}
+    + Lon (string, required)
+
+        + Sample: {{Lon}}
+
++ Response 200 
+    + Attributes (object)
+
+
+### VehicleDocumentAdd Test [POST]
+TODO: Add Description
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: UID-159
+    + DocumentCategory (number, required)
+
+        + Sample: 1
+    + DocumentDateTime (string, required)
+
+        + Sample: 2018-05-22
+    + Lat (number, required)
+
+        + Sample: 46.073118
+    + Lon (number, required)
+
+        + Sample: 14.4992359
+
++ Response 200 
+
+
+
+
+## DataAPI VehicleDocumentFileAdd Xml [/DataAPI/VehicleDocumentFileAdd/xml{?AuthToken,VehicleDocumentID,FileDateTime,FileName,FileData}]
+
+### VehicleDocumentFileAdd [POST]
+Adds a vehicle document.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehicleDocumentID (string, required)
+
+        + Sample: {{VehicleDocumentID}}
+    + FileDateTime (string, required)
+
+        + Sample: {{FileDateTime}}
+    + FileName (string, required)
+
+        + Sample: {{FileName}}
+    + FileData (string, required)
+
+        + Sample: {{FileData}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DataAPI VehicleGPSdata Xml [/DataAPI/VehicleGPSdata/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleGPSdata [POST]
+Returns various GPS data for specified vehicle within specified time period (max. 31 days).
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group TransportOrderAPI
+
+## TransportOrderAPI OrderNew Xml [/TransportOrderAPI/OrderNew/xml]
+
+### OrderNew [POST]
+Adds new orders.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderNew}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderNew Xml [/TransportOrderAPI/OrderNew/xml{?AuthToken,InputXML}]
+
+### OrderNew v2 [POST]
+Adds new orders.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderNew_v2}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderChange Xml [/TransportOrderAPI/OrderChange/xml{?AuthToken,InputXML}]
+
+### OrderChange [POST]
+Changes orders.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderChange}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderDelete Xml [/TransportOrderAPI/OrderDelete/xml{?AuthToken,InputXML}]
+
+### OrderDelete [POST]
+Deletes orders.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderDelete}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderAssignToVehicle Xml [/TransportOrderAPI/OrderAssignToVehicle/xml{?AuthToken,InputXML}]
+
+### OrderAssignToVehicle [POST]
+Assigns orders to vehicles.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderAssignToVehicle}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderRevokeFromVehicle Xml [/TransportOrderAPI/OrderRevokeFromVehicle/xml{?AuthToken,InputXML}]
+
+### OrderRevokeFromVehicle [POST]
+Revokes orders from its assigned vehicle.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderRevokeFromVehicle}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderList Xml [/TransportOrderAPI/OrderList/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo,OrderStatus,ReturnClosedOrders,OrderExtKey}]
+
+### OrderList [POST]
+Lists orders filterd by input parameters.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom_OrderList}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo_OrderList}}
+    + OrderStatus (string, required)
+
+        + Sample: {{OrderStatus}}
+    + ReturnClosedOrders (string, required)
+
+        + Sample: {{ReturnClosedOrders}}
+    + OrderExtKey (string, required)
+
+        + Sample: {{OrderExtKey}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderGet Xml [/TransportOrderAPI/OrderGet/xml{?AuthToken,InputXML}]
+
+### OrderGet [POST]
+Gets orders.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_OrderGet}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI OrderStatusHistoryGet Xml [/TransportOrderAPI/OrderStatusHistoryGet/xml{?AuthToken,DateTimeFrom}]
+
+### OrderStatusHistoryGet [POST]
+Gets orders.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + DateTimeFrom (string, required)
+
+        + Sample: {{DateTimeFrom}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI EventChange Xml [/TransportOrderAPI/EventChange/xml{?AuthToken,InputXML}]
+
+### EventChange [POST]
+Changes events.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_EventChange}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI EventList Xml [/TransportOrderAPI/EventList/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo,EventStatus,ReturnClosedEvents,EventExtKey}]
+
+### EventList [POST]
+Lists events filterd by input parameters. To discard filter parameter set it to empty string.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom_EventList}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo_EventList}}
+    + EventStatus (string, required)
+
+        + Sample: {{EventStatus}}
+    + ReturnClosedEvents (string, required)
+
+        + Sample: {{ReturnClosedEvents}}
+    + EventExtKey (string, required)
+
+        + Sample: {{EventExtKey}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI EventGet Xml [/TransportOrderAPI/EventGet/xml{?AuthToken,InputXML}]
+
+### EventGet [POST]
+Gets events.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_EventGet}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TransportOrderAPI EventStatusHistoryGet Xml [/TransportOrderAPI/EventStatusHistoryGet/xml{?AuthToken,DateTimeFrom}]
+
+### EventStatusHistoryGet [POST]
+Gets status history of taks from specified date until now.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + DateTimeFrom (string, required)
+
+        + Sample: {{DateTimeFrom}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group ReportingAPI
+
+## ReportingAPI VehicleConsumption Xml [/ReportingAPI/VehicleConsumption/xml]
+
+### VehicleConsumption [POST]
+Gets fuel consumption for a specified vehicle within specified 14 days.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleConsumptionCompare Xml [/ReportingAPI/VehicleConsumptionCompare/xml{?AuthToken,VehiclePlateNumber,InputXML,DateFrom,DateTo}]
+
+### VehicleConsumptionCompare [POST]
+Gets comparison of fuel consumption for specified vehicles within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_VehicleConsumptionCompare}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleFueling Xml [/ReportingAPI/VehicleFueling/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleFueling [POST]
+Gets fueling overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleFuelingToFueling Xml [/ReportingAPI/VehicleFuelingToFueling/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleFuelingToFueling [POST]
+Gets fueling overview between two fuelings for a specified vehicle within specified 14 days. Works only for vehicles with fuel level sensors.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehiclePaths Xml [/ReportingAPI/VehiclePaths/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehiclePaths [POST]
+Gets daily paths for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleUsage Xml [/ReportingAPI/VehicleUsage/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleUsage [POST]
+Gets usage overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleWorkPrivate Xml [/ReportingAPI/VehicleWorkPrivate/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleWorkPrivate [POST]
+Gets work and private usage overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleFMSHistory Xml [/ReportingAPI/VehicleFMSHistory/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleFMSHistory [POST]
+Gets vehicle FMS data history.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleMaximumValuesCompare Xml [/ReportingAPI/VehicleMaximumValuesCompare/xml{?AuthToken,InputXML,DateFrom,DateTo}]
+
+### VehicleMaximumValuesCompare [POST]
+Gets comparison of maximum RPM, temperature and speed values for specified vehicles within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_VehicleMaximumValuesCompare}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleAvgUsage Xml [/ReportingAPI/VehicleAvgUsage/xml{?AuthToken,VehiclePlateNumber}]
+
+### VehicleAvgUsage [POST]
+Gets various driving information for specified vehicle. It is possible to compare the information with average vehicle in your fleet, average vehicle and average vehicle of the same type in the CVS Mobile system.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleStops Xml [/ReportingAPI/VehicleStops/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo,MathOperator,MinDuration}]
+
+### VehicleStops [POST]
+Gets vehicle stops daily overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+    + MathOperator (string, required)
+
+        + Sample: {{MathOperator}}
+    + MinDuration (string, required)
+
+        + Sample: {{MinDuration}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleSensors Xml [/ReportingAPI/VehicleSensors/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleSensors [POST]
+Gets sensor detections daily overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleTempSensors Xml [/ReportingAPI/VehicleTempSensors/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleTempSensors [POST]
+Gets temperature sensors data overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleTempAlarms Xml [/ReportingAPI/VehicleTempAlarms/xml{?AuthToken,VehiclePlateNumber,DateFrom,DateTo}]
+
+### VehicleTempAlarms [POST]
+Gets temperature alarms overview for a specified vehicle within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI DriverPaths Xml [/ReportingAPI/DriverPaths/xml{?AuthToken,DriverOrTachographCardNumber,DateFrom,DateTo}]
+
+### DriverPaths [POST]
+Gets paths for a specified driver within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + DriverOrTachographCardNumber (string, required)
+
+        + Sample: {{DriverOrTachographCardNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI DriverLoginLogout Xml [/ReportingAPI/DriverLoginLogout/xml{?AuthToken,DriverOrTachographCardNumber,DateFrom,DateTo}]
+
+### DriverLoginLogout [POST]
+Gets login/logouts for specified driver within specified 14 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + DriverOrTachographCardNumber (string, required)
+
+        + Sample: {{DriverOrTachographCardNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleInCountries Xml [/ReportingAPI/VehicleInCountries/xml{?AuthToken,InputXML,DateFrom,DateTo}]
+
+### VehicleInCountries [POST]
+Gets driving time, driving and work time in countries and country entries/exits for specified driver within specified 31 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_VehicleInCountries}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI DriverInCountries Xml [/ReportingAPI/DriverInCountries/xml{?AuthToken,InputXML,DateFrom,DateTo}]
+
+### DriverInCountries [POST]
+Gets driving time, driving and work time in countries (also with UDS data) and country entries/exits for specified driver within specified 31 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_DriverInCountries}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## ReportingAPI VehicleTravelOrder Xml [/ReportingAPI/VehicleTravelOrder/xml{?AuthToken,InputXML,DateFrom,DateTo}]
+
+### VehicleTravelOrder [POST]
+Gets travel orders information within specified 31 days.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_VehicleTravelOrder}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group LocationsAPI
+
+## LocationsAPI LocationAdd Xml [/LocationsAPI/LocationAdd/xml]
+
+### LocationAdd [POST]
+Adds new location. If location has latitude and longitude (and confirm status is not 0), it is a confirmed location. Confirmed locations with no latitude and longitude have longitude and latitude set to 0. All other locations are unconfirmed and are given a confirmation key. Visit URL: http://mobileweb.cvs-mobile.com/locations.aspx?locationid=[ConfirmationKey] to confirm unconfirmed locations.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_LocationAdd}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI LocationChange Xml [/LocationsAPI/LocationChange/xml{?AuthToken,InputXML}]
+
+### LocationChange [POST]
+Changes locations.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_LocationChange}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI LocationDelete Xml [/LocationsAPI/LocationDelete/xml{?AuthToken,LocationExtKey}]
+
+### LocationDelete [POST]
+Deletes location.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + LocationExtKey (string, required)
+
+        + Sample: {{LocationExtKey}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI LocationList Xml [/LocationsAPI/LocationList/xml{?AuthToken}]
+
+### LocationList [POST]
+Lists all locations.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI LocationGet Xml [/LocationsAPI/LocationGet/xml{?AuthToken,InputXML}]
+
+### LocationGet [POST]
+Gets all information for specified locations.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_LocationGet}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI VehicleOnLocation Xml [/LocationsAPI/VehicleOnLocation/xml{?AuthToken,VehiclePlateNumber,DateTimeFrom,DateTimeTo,InputXML,MinStopDuration}]
+
+### VehicleOnLocation [POST]
+Lists vehicles on the specified location.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateTimeFrom (string, required)
+
+        + Sample: {{DateTimeFrom}}
+    + DateTimeTo (string, required)
+
+        + Sample: {{DateTimeTo}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_VehicleOnLocation}}
+    + MinStopDuration (string, required)
+
+        + Sample: {{MinStopDuration}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI BusinessPartnerAdd Xml [/LocationsAPI/BusinessPartnerAdd/xml{?AuthToken,VehiclePlateNumber,InputXML}]
+
+### BusinessPartnerAdd [POST]
+Adds business partners.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_BusinessPartnerAdd}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI BusinessPartnerChange Xml [/LocationsAPI/BusinessPartnerChange/xml{?AuthToken,InputXML}]
+
+### BusinessPartnerChange [POST]
+Changes business partners.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_BusinessPartnerChange}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI BusinessPartnerDelete Xml [/LocationsAPI/BusinessPartnerDelete/xml{?AuthToken,BusinessPartnerExtKey}]
+
+### BusinessPartnerDelete [POST]
+Deletes business partners.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + BusinessPartnerExtKey (string, required)
+
+        + Sample: {{BusinessPartnerExtKey}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI BusinessPartnerList Xml [/LocationsAPI/BusinessPartnerList/xml{?AuthToken}]
+
+### BusinessPartnerList [POST]
+Lists all business partners.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## LocationsAPI BusinessPartnerGet Xml [/LocationsAPI/BusinessPartnerGet/xml{?AuthToken,InputXML}]
+
+### BusinessPartnerGet [POST]
+Gets all information for specified locations.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_BusinessPartnerGet}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group DriverAPI
+
+## DriverAPI DriverAdd Xml [/DriverAPI/DriverAdd/xml]
+
+### DriverAdd [POST]
+Adds new driver.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_DriverAdd}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DriverAPI DriverChange Xml [/DriverAPI/DriverChange/xml{?AuthToken,InputXML}]
+
+### DriverChange [POST]
+Changes driver.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_DriverChange}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DriverAPI DriverDelete Xml [/DriverAPI/DriverDelete/xml{?AuthToken,DriverExtKey}]
+
+### DriverDelete [POST]
+Deletes driver.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + DriverExtKey (string, required)
+
+        + Sample: {{DriverExtKey}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DriverAPI DriverList Xml [/DriverAPI/DriverList/xml{?AuthToken}]
+
+### DriverList [POST]
+Lists all drivers.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## DriverAPI DriverGet Xml [/DriverAPI/DriverGet/xml{?AuthToken,InputXML}]
+
+### DriverGet [POST]
+Gets all information for specified driver.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + InputXML (string, required)
+
+        + Sample: {{InputXML_DriverGet}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group TachographAPI
+
+## TachographAPI TachographFileList Xml [/TachographAPI/TachographFileList/xml]
+
+### TachographFileList [POST]
+Lists tachograph files, filtered by input parameters. If parameters are empty it lists all.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumberOrTachographCardNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateFrom (string, required)
+
+        + Sample: {{DateFrom}}
+    + DateTo (string, required)
+
+        + Sample: {{DateTo}}
+    + Type (string, required)
+
+        + Sample: {{Type}}
+    + TachographCardNumberOrVehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TachographAPI TachographFileDownload Xml [/TachographAPI/TachographFileDownload/xml{?AuthToken,TachographFileID}]
+
+### TachographFileDownload [POST]
+Gets tachograph file data.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + TachographFileID (string, required)
+
+        + Sample: {{TachographFileID}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group MessagingAPI
+
+## MessagingAPI SendMessageToVehicle Xml [/MessagingAPI/SendMessageToVehicle/xml]
+
+### SendMessageToVehicle [POST]
+Sends a message to a vehicle.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + SenderUsername (string, required)
+
+        + Sample: {{SenderUsername}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + ChatMessage (string, required)
+
+        + Sample: {{ChatMessage}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## MessagingAPI CodeListGet Xml [/MessagingAPI/CodeListGet/xml{?AuthToken,CodeListType}]
+
+### CodeListGet [POST]
+Returns code lists.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + CodeListType (string, required)
+
+        + Sample: {{CodeListType}}
+
++ Request (application/x-www-form-urlencoded)
+
+
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group MobileJobAPI
+
+## MobileJobAPI TaskAdd Xml [/MobileJobAPI/TaskAdd/xml]
+
+### TaskAdd [POST]
+Adds new task.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + SenderUsername (string, required)
+
+        + Sample: {{SenderUsername}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + ChatMessage (string, required)
+
+        + Sample: {{ChatMessage}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+
+# Group TelematicAPI
+
+## TelematicAPI VehicleAdd Xml [/TelematicAPI/VehicleAdd/xml]
+
+### VehicleAdd [POST]
+Adds vehicle data.
++ Attributes
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + VehicleTypeID (string, required)
+
+        + Sample: {{VehicleTypeID}}
+    + RepTime (string, required)
+
+        + Sample: {{RepTime}}
+    + IMEI (string, required)
+
+        + Sample: {{IMEI}}
+    + IMSI (string, required)
+
+        + Sample: {{IMSI}}
+    + FirmwareVersion (string, required)
+
+        + Sample: {{FirmwareVersion}}
+    + RepAng (string, required)
+
+        + Sample: {{RepAng}}
+    + RepDist (string, required)
+
+        + Sample: {{RepDist}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TelematicAPI VehicleChange Xml [/TelematicAPI/VehicleChange/xml{?AuthToken,VehiclePlateNumber,VehicleTypeID,RepTime,IMEI,IMSI,FirmwareVersion,RepAng,RepDist}]
+
+### VehicleChange [POST]
+Changes vehicle data.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + VehicleTypeID (string, required)
+
+        + Sample: {{VehicleTypeID}}
+    + RepTime (string, required)
+
+        + Sample: {{RepTime}}
+    + IMEI (string, required)
+
+        + Sample: {{IMEI}}
+    + IMSI (string, required)
+
+        + Sample: {{IMSI}}
+    + FirmwareVersion (string, required)
+
+        + Sample: {{FirmwareVersion}}
+    + RepAng (string, required)
+
+        + Sample: {{RepAng}}
+    + RepDist (string, required)
+
+        + Sample: {{RepDist}}
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## TelematicAPI VehicleDataInsert Xml [/TelematicAPI/VehicleDataInsert/xml{?AuthToken,VehiclePlateNumber,DateTime,Lat,Lon,Heading,Speed,Valid,DD,Satellites,S1,S2,S3,S4,S5,Altitude}]
+
+### VehicleDataInsert [POST]
+Inserts telematics data from modem.
++ Parameters
+    + AuthToken (string, required)
+
+        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+    + VehiclePlateNumber (string, required)
+
+        + Sample: {{VehiclePlateNumber}}
+    + DateTime (string, required)
+
+        + Sample: {{DateTime}}
+    + Lat (string, required)
+
+        + Sample: {{Lat}}
+    + Lon (string, required)
+
+        + Sample: {{Lon}}
+    + Heading (string, required)
+
+        + Sample: {{Heading}}
+    + Speed (string, required)
+
+        + Sample: {{Speed}}
+    + Valid (string, required)
+
+        + Sample: {{Valid}}
+    + DD (string, required)
+
+        + Sample: {{DD}}
+    + Satellites (string, required)
+
+        + Sample: {{Satellites}}
+    + S1 (string, required)
+
+        + Sample: {{S1}}
+    + S2 (string, required)
+
+        + Sample: {{S2}}
+    + S3 (string, required)
+
+        + Sample: {{S3}}
+    + S4 (string, required)
+
+        + Sample: {{S4}}
+    + S5 (string, required)
+
+        + Sample: {{S5}}
+    + Altitude (string, required)
+
+        + Sample: {{Altitude}}
+
++ Response 200 
+    + Attributes (object)
+
+

@@ -17,13 +17,11 @@ Generates authToken that is valid 24 hours.
 
 
 
+| Calls per minute | Calls per hour | Calls per day |
 
+| ---------------- | -------------- | ------------- |
 
-Calls per minute | Calls per hour | Calls per day
-
--- | ---- | -----------
-
-1 |12 |No limit 
+| 1 |12  |No limit |
 
 
 
@@ -33,15 +31,15 @@ Calls per minute | Calls per hour | Calls per day
 
 
 
-Message | Description
+| Message | Description |
 
--- | ---- 
+| --------------- | --------------------------------------- |
 
-API_LIMIT_DAY:N | Exceeded N methods calls in this day
+| API_LIMIT_DAY:N | Exceeded N methods calls in this day    |
 
-API_LIMIT_HOUR:N | Exceeded N methods calls in this hour
+| API_LIMIT_HOUR:N | Exceeded N methods calls in this hour  |
 
-API_LIMIT_MIN:N | Exceeded N methods calls in this minute
+| API_LIMIT_MIN:N | Exceeded N methods calls in this minute |
 + Attributes
     + Username (string, required)
 
@@ -50,8 +48,17 @@ API_LIMIT_MIN:N | Exceeded N methods calls in this minute
 
         + Sample: {{Password}}
 
++ Request 
+    + Headers
+
+            Username:{{Username}}
+            Password:{{Password}}
+
+
+
+
 + Response 200 
-    + Attributes (object)
+
 
 
 
@@ -140,32 +147,6 @@ Adds a vehicle document.
 
 + Response 200 
     + Attributes (object)
-
-
-### VehicleDocumentAdd Test [POST]
-TODO: Add Description
-+ Parameters
-    + AuthToken (string, required)
-
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
-    + VehiclePlateNumber (string, required)
-
-        + Sample: UID-159
-    + DocumentCategory (number, required)
-
-        + Sample: 1
-    + DocumentDateTime (string, required)
-
-        + Sample: 2018-05-22
-    + Lat (number, required)
-
-        + Sample: 46.073118
-    + Lon (number, required)
-
-        + Sample: 14.4992359
-
-+ Response 200 
-
 
 
 

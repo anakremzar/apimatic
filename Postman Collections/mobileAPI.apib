@@ -105,7 +105,7 @@ Lists current values of temperature sensors and their switches.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
 
 + Response 200 
     + Attributes (object)
@@ -119,22 +119,22 @@ Adds a vehicle document.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{DataAPI_VehicleDocumentAdd_VehiclePlateNumber}}
     + DocumentCategory (string, required)
 
-        + Sample: {{DocumentCategory}}
+        + Sample: {{DataAPI_VehicleDocumentAdd_DocumentCategory}}
     + DocumentDateTime (string, required)
 
-        + Sample: {{DocumentDateTime}}
+        + Sample: {{DataAPI_VehicleDocumentAdd_DocumentDateTime}}
     + Lat (string, required)
 
-        + Sample: {{Lat}}
+        + Sample: {{DataAPI_VehicleDocumentAdd_Lat}}
     + Lon (string, required)
 
-        + Sample: {{Lon}}
+        + Sample: {{DataAPI_VehicleDocumentAdd_Lon}}
 
 + Response 200 
     + Attributes (object)
@@ -148,19 +148,19 @@ Adds a vehicle document.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehicleDocumentID (string, required)
 
-        + Sample: {{VehicleDocumentID}}
+        + Sample: {{DataAPI_VehicleDocumentFileAdd_VehicleDocumentID}}
     + FileDateTime (string, required)
 
-        + Sample: {{FileDateTime}}
+        + Sample: {{DataAPI_VehicleDocumentFileAdd_FileDateTime}}
     + FileName (string, required)
 
-        + Sample: {{FileName}}
+        + Sample: {{DataAPI_VehicleDocumentFileAdd_FileName}}
     + FileData (string, required)
 
-        + Sample: {{FileData}}
+        + Sample: {{DataAPI_VehicleDocumentFileAdd_FileData}}
 
 + Response 200 
     + Attributes (object)
@@ -174,16 +174,16 @@ Returns various GPS data for specified vehicle within specified time period (max
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{DataAPI_VehicleGPSdata_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{DataAPI_VehicleGPSdata_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{DataAPI_VehicleGPSdata_DateTo}}
 
 + Response 200 
     + Attributes (object)

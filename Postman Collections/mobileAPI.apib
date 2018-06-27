@@ -200,10 +200,19 @@ Adds new orders.
 + Attributes
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + InputXML (string, required)
 
-        + Sample: {{InputXML_OrderNew}}
+        + Sample: <Orders>
+  <Order VehiclePlateNumber="UID-159" OrderExtKey="ORDER11" OrderStatus="300" ContractorName="CVS d.d." OrderReferenceNumber="123458847/2015" LoadReferenceNumber="123" CargoVolume="10" CargoWeight="10" CargoLoadingMeters="1" CargoDescription="10xEURO pallets" OrderNotes="Test">
+    <Event EventExtKey="EV1234" Type="LOADING" Date="2015-11-30" StartingHour="00:00" EndingHour="24:00" PlannedArrivalHour="09:30" Contact="John Doe 040 123 456" EventInstructions="Loading instructions">
+      <Location Latitude="46.07237" Longitude="14.64414" Name="Cvs Mobile, informacijske reaitve, d.d." Country="SVN" Postcode="SI-1000" City="LJUBLJANA" StreetAndHousenumber="Ulica Gradnikove brigade 11" />
+    </Event>
+    <Event EventExtKey="EV1244" Type="UNLOADING" Date="2015-11-30" StartingHour="15:00" EndingHour="15:00" PlannedArrivalHour="09:30" Contact="John Doe 040 123 456" EventInstructions="Unloading instructions">
+      <Location Latitude="45.81566" Longitude="15.27889" Name="Krka, tovarna zdravil, d.d., Novo mesto" Country="SVN" Postcode="8501" City="NOVO MESTO" StreetAndHousenumber="`marjeaka cesta 6" />
+    </Event>
+  </Order>
+</Orders>
 
 + Response 200 
     + Attributes (object)
@@ -217,10 +226,19 @@ Adds new orders.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + InputXML (string, required)
 
-        + Sample: {{InputXML_OrderNew_v2}}
+        + Sample: <Orders>
+  <Order VehiclePlateNumber="UID-159" OrderExtKey="ORDER11" OrderStatus="300" ContractorName="CVS d.d." OrderReferenceNumber="123458847/2015" LoadReferenceNumber="123" CargoVolume="10" CargoWeight="10" CargoLoadingMeters="1" CargoDescription="10xEURO pallets" OrderNotes="Test">
+    <Event EventExtKey="EV1234" Type="LOADING" Date="2015-11-30" StartingHour="00:00" EndingHour="24:00" PlannedArrivalHour="09:30" Contact="John Doe 040 123 456" EventInstructions="Loading instructions">
+      <Location Latitude="46.07237" Longitude="14.64414" Name="Cvs Mobile, informacijske reaitve, d.d." Country="SVN" Postcode="SI-1000" City="LJUBLJANA" StreetAndHousenumber="Ulica Gradnikove brigade 11" />
+    </Event>
+    <Event EventExtKey="EV1244" Type="UNLOADING" Date="2015-11-30" StartingHour="15:00" EndingHour="15:00" PlannedArrivalHour="09:30" Contact="John Doe 040 123 456" EventInstructions="Unloading instructions">
+      <Location Latitude="45.81566" Longitude="15.27889" Name="Krka, tovarna zdravil, d.d., Novo mesto" Country="SVN" Postcode="8501" City="NOVO MESTO" StreetAndHousenumber="`marjeaka cesta 6" />
+    </Event>
+  </Order>
+</Orders>
 
 + Response 200 
     + Attributes (object)
@@ -234,10 +252,10 @@ Changes orders.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + InputXML (string, required)
 
-        + Sample: {{InputXML_OrderChange}}
+        + Sample: {{TransportOrderAPI_OrderChange_InputXML}}
 
 + Response 200 
     + Attributes (object)
@@ -251,10 +269,10 @@ Deletes orders.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + InputXML (string, required)
 
-        + Sample: {{InputXML_OrderDelete}}
+        + Sample: {{TransportOrderAPI_OrderDelete_InputXML}}
 
 + Response 200 
     + Attributes (object)
@@ -454,42 +472,39 @@ Gets fuel consumption for a specified vehicle within specified 14 days.
 + Attributes
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleConsumption_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleConsumption_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleConsumption_DateTo}}
 
 + Response 200 
     + Attributes (object)
 
 
 
-## ReportingAPI VehicleConsumptionCompare Xml [/ReportingAPI/VehicleConsumptionCompare/xml{?AuthToken,VehiclePlateNumber,InputXML,DateFrom,DateTo}]
+## ReportingAPI VehicleConsumptionCompare Xml [/ReportingAPI/VehicleConsumptionCompare/xml{?AuthToken,InputXML,DateFrom,DateTo}]
 
 ### VehicleConsumptionCompare [POST]
 Gets comparison of fuel consumption for specified vehicles within specified 14 days.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
-    + VehiclePlateNumber (string, required)
-
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{authToken}}
     + InputXML (string, required)
 
-        + Sample: {{InputXML_VehicleConsumptionCompare}}
+        + Sample: {{ReportingAPI_VehicleConsumptionCompare_InputXML}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleConsumptionCompare_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleConsumptionCompare_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -503,16 +518,16 @@ Gets fueling overview for a specified vehicle within specified 14 days.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleFueling_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleFueling_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleFueling_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -526,16 +541,16 @@ Gets fueling overview between two fuelings for a specified vehicle within specif
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleFuelingToFueling_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleFuelingToFueling_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleFuelingToFueling_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -549,16 +564,16 @@ Gets daily paths for a specified vehicle within specified 14 days.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehiclePaths_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehiclePaths_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehiclePaths_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -572,16 +587,16 @@ Gets usage overview for a specified vehicle within specified 14 days.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleUsage_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleUsage_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleUsage_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -595,16 +610,16 @@ Gets work and private usage overview for a specified vehicle within specified 14
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleWorkPrivate_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleWorkPrivate_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleWorkPrivate_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -618,16 +633,16 @@ Gets vehicle FMS data history.
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleFMSHistory_VehiclePlateNumber}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleFMSHistory_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleFMSHistory_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -641,16 +656,16 @@ Gets comparison of maximum RPM, temperature and speed values for specified vehic
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + InputXML (string, required)
 
-        + Sample: {{InputXML_VehicleMaximumValuesCompare}}
+        + Sample: {{ReportingAPI_VehicleMaximumValuesCompare_InputXML}}
     + DateFrom (string, required)
 
-        + Sample: {{DateFrom}}
+        + Sample: {{ReportingAPI_VehicleMaximumValuesCompare_DateFrom}}
     + DateTo (string, required)
 
-        + Sample: {{DateTo}}
+        + Sample: {{ReportingAPI_VehicleMaximumValuesCompare_DateTo}}
 
 + Response 200 
     + Attributes (object)
@@ -664,10 +679,10 @@ Gets various driving information for specified vehicle. It is possible to compar
 + Parameters
     + AuthToken (string, required)
 
-        + Sample: {{_AuthenticationAPI_Authenticate_authToken}}
+        + Sample: {{authToken}}
     + VehiclePlateNumber (string, required)
 
-        + Sample: {{VehiclePlateNumber}}
+        + Sample: {{ReportingAPI_VehicleAvgUsage_VehiclePlateNumber}}
 
 + Response 200 
     + Attributes (object)
